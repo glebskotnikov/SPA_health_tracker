@@ -22,14 +22,20 @@ class Migration(migrations.Migration):
             model_name="user",
             name="tg_chat_id",
             field=models.CharField(
-                blank=True, max_length=50, null=True, verbose_name="telegram chat-id"
+                blank=True,
+                max_length=50,
+                null=True,
+                verbose_name="telegram chat-id",
             ),
         ),
         migrations.AlterField(
             model_name="user",
             name="avatar",
             field=models.ImageField(
-                blank=True, null=True, upload_to="users/", verbose_name="avatar"
+                blank=True,
+                null=True,
+                upload_to="users/",
+                verbose_name="avatar",
             ),
         ),
         migrations.AlterField(
@@ -42,7 +48,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="user",
             name="email",
-            field=models.EmailField(max_length=254, unique=True, verbose_name="email"),
+            field=models.EmailField(
+                max_length=254, unique=True, verbose_name="email"
+            ),
         ),
         migrations.AlterField(
             model_name="user",

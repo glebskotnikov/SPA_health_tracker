@@ -1,8 +1,12 @@
 from drf_spectacular.utils import extend_schema
 from rest_framework import status
-from rest_framework.generics import (CreateAPIView, DestroyAPIView,
-                                     ListAPIView, RetrieveAPIView,
-                                     UpdateAPIView)
+from rest_framework.generics import (
+    CreateAPIView,
+    DestroyAPIView,
+    ListAPIView,
+    RetrieveAPIView,
+    UpdateAPIView,
+)
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
@@ -110,7 +114,8 @@ class UserDestroyAPIView(DestroyAPIView):
             return Response(status=status.HTTP_204_NO_CONTENT)
         else:
             return Response(
-                {"message": "You cannot delete other user's profile"}, status=403
+                {"message": "You cannot delete other user's profile"},
+                status=403,
             )
 
     def perform_destroy(self, instance):

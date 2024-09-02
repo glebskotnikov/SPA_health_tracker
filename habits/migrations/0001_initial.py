@@ -26,19 +26,32 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("location", models.CharField(max_length=100, verbose_name="location")),
+                (
+                    "location",
+                    models.CharField(max_length=100, verbose_name="location"),
+                ),
                 ("time", models.TimeField(verbose_name="time")),
-                ("action", models.CharField(max_length=100, verbose_name="action")),
+                (
+                    "action",
+                    models.CharField(max_length=100, verbose_name="action"),
+                ),
                 ("is_pleasant", models.BooleanField(verbose_name="pleasant")),
                 (
                     "periodicity",
-                    models.PositiveIntegerField(default=1, verbose_name="periodicity"),
+                    models.PositiveIntegerField(
+                        default=1, verbose_name="periodicity"
+                    ),
                 ),
                 (
                     "reward",
-                    models.CharField(blank=True, max_length=100, verbose_name="reward"),
+                    models.CharField(
+                        blank=True, max_length=100, verbose_name="reward"
+                    ),
                 ),
-                ("duration", models.PositiveIntegerField(verbose_name="duration")),
+                (
+                    "duration",
+                    models.PositiveIntegerField(verbose_name="duration"),
+                ),
                 (
                     "is_public",
                     models.BooleanField(default=False, verbose_name="public"),

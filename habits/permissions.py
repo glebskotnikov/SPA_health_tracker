@@ -8,7 +8,9 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
         # Read permissions are allowed to any request,
         # so we'll always allow GET, HEAD or OPTIONS requests.
         if request.method in permissions.SAFE_METHODS:
-            return obj.is_public
+            return (
+                obj.is_public or obj.user == request.user
+            )  # allow the owner to retrieve the habit
 
         # Write permissions are only allowed to the owner of the habit.
         return obj.user == request.user

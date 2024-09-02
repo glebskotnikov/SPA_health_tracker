@@ -26,7 +26,10 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("password", models.CharField(max_length=128, verbose_name="password")),
+                (
+                    "password",
+                    models.CharField(max_length=128, verbose_name="password"),
+                ),
                 (
                     "last_login",
                     models.DateTimeField(
@@ -72,7 +75,8 @@ class Migration(migrations.Migration):
                 (
                     "date_joined",
                     models.DateTimeField(
-                        default=django.utils.timezone.now, verbose_name="date joined"
+                        default=django.utils.timezone.now,
+                        verbose_name="date joined",
                     ),
                 ),
                 (
@@ -84,19 +88,28 @@ class Migration(migrations.Migration):
                 (
                     "phone",
                     models.CharField(
-                        blank=True, max_length=35, null=True, verbose_name="телефон"
+                        blank=True,
+                        max_length=35,
+                        null=True,
+                        verbose_name="телефон",
                     ),
                 ),
                 (
                     "city",
                     models.CharField(
-                        blank=True, max_length=35, null=True, verbose_name="город"
+                        blank=True,
+                        max_length=35,
+                        null=True,
+                        verbose_name="город",
                     ),
                 ),
                 (
                     "avatar",
                     models.ImageField(
-                        blank=True, null=True, upload_to="users/", verbose_name="аватар"
+                        blank=True,
+                        null=True,
+                        upload_to="users/",
+                        verbose_name="аватар",
                     ),
                 ),
                 (
