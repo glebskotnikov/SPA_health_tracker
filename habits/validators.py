@@ -4,8 +4,7 @@ from rest_framework.serializers import ValidationError
 def validate_connected_habit_and_reward(data):
     if data.get("related_habit") and data.get("reward"):
         raise ValidationError(
-            "Both connected habit and reward "
-            "cannot be chosen at the same time."
+            "Both connected habit and reward " "cannot be chosen at the same time."
         )
 
 
@@ -21,12 +20,8 @@ def validate_connected_habit_nature(data):
 
 
 def validate_pleasant_habit(data):
-    if data.get("is_pleasant") and (
-        data.get("reward") or data.get("related_habit")
-    ):
-        raise ValidationError(
-            "Pleasant habit can not have reward or related habit."
-        )
+    if data.get("is_pleasant") and (data.get("reward") or data.get("related_habit")):
+        raise ValidationError("Pleasant habit can not have reward or related habit.")
 
 
 def validate_habit_periodicity(data):

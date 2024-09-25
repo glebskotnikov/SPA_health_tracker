@@ -12,13 +12,11 @@ from rest_framework.test import APITestCase
 
 from config.settings import TELEGRAM_TOKEN, TELEGRAM_URL
 from habits.services import send_telegram_message
-from habits.validators import (
-    validate_connected_habit_and_reward,
-    validate_connected_habit_nature,
-    validate_habit_duration,
-    validate_habit_periodicity,
-    validate_pleasant_habit,
-)
+from habits.validators import (validate_connected_habit_and_reward,
+                               validate_connected_habit_nature,
+                               validate_habit_duration,
+                               validate_habit_periodicity,
+                               validate_pleasant_habit)
 from users.models import User
 
 from .models import Habit
@@ -32,15 +30,15 @@ class HabitTestCase(APITestCase):
         self.client.force_authenticate(user=self.user)
 
     def create_habit(
-            self,
-            action="Drink water",
-            location="Kitchen",
-            time="09:00",
-            is_pleasant=True,
-            periodicity=1,
-            reward="",
-            duration=60,
-            is_public=False,
+        self,
+        action="Drink water",
+        location="Kitchen",
+        time="09:00",
+        is_pleasant=True,
+        periodicity=1,
+        reward="",
+        duration=60,
+        is_public=False,
     ):
         return Habit.objects.create(
             user=self.user,
@@ -139,9 +137,7 @@ class HabitTestCase(APITestCase):
     def test_create_habit_with_related_habit(self):
         """Habit creation with related habit test."""
 
-        related_habit = self.create_habit(
-            action="Morning run", location="Park"
-        )
+        related_habit = self.create_habit(action="Morning run", location="Park")
         url = reverse("habits:habit-list")
 
         data = {
@@ -217,9 +213,7 @@ class TestValidators(TestCase):
             validate_habit_duration({"duration": 120})
             validate_habit_duration({"duration": 119})
         except ValidationError:
-            self.fail(
-                "validate_habit_duration raised ValidationError unexpectedly!"
-            )
+            self.fail("validate_habit_duration raised ValidationError unexpectedly!")
 
     # test for validate_connected_habit_nature
     def test_validate_connected_habit_nature_unpleasant_habit(self):
@@ -242,20 +236,14 @@ class TestValidators(TestCase):
     # test for validate_pleasant_habit
     def test_validate_pleasant_habit_with_reward_or_related_habit(self):
         with self.assertRaises(ValidationError):
-            validate_pleasant_habit(
-                {"is_pleasant": True, "reward": "Watch TV"}
-            )
-            validate_pleasant_habit(
-                {"is_pleasant": True, "related_habit": "Read book"}
-            )
+            validate_pleasant_habit({"is_pleasant": True, "reward": "Watch TV"})
+            validate_pleasant_habit({"is_pleasant": True, "related_habit": "Read book"})
 
     def test_validate_pleasant_habit_no_reward_no_related_habit(self):
         try:
             validate_pleasant_habit({"is_pleasant": True})
         except ValidationError:
-            self.fail(
-                "validate_pleasant_habit raised ValidationError unexpectedly!"
-            )
+            self.fail("validate_pleasant_habit raised ValidationError unexpectedly!")
 
     # test for validate_habit_periodicity
     def test_validate_habit_periodicity_less_than_1_or_greater_than_7(self):
@@ -269,8 +257,7 @@ class TestValidators(TestCase):
             validate_habit_periodicity({"periodicity": 7})
         except ValidationError:
             self.fail(
-                "validate_habit_periodicity raised "
-                "ValidationError unexpectedly!"
+                "validate_habit_periodicity raised " "ValidationError unexpectedly!"
             )
 
 
@@ -287,9 +274,7 @@ class ServicesTestCase(TestCase):
 
             assert m.called
             assert m.call_count == 1
-            parsed_actual_url = urlparse(m.last_request.url)._replace(
-                query=None
-            )
+            parsed_actual_url = urlparse(m.last_request.url)._replace(query=None)
             assert parsed_actual_url.geturl() == url
 
 

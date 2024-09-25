@@ -10,9 +10,7 @@ class User(AbstractUser):
 
     phone = models.CharField(max_length=35, verbose_name="phone", **NULLABLE)
     city = models.CharField(max_length=35, verbose_name="city", **NULLABLE)
-    avatar = models.ImageField(
-        upload_to="users/", verbose_name="avatar", **NULLABLE
-    )
+    avatar = models.ImageField(upload_to="users/", verbose_name="avatar", **NULLABLE)
 
     tg_chat_id = models.CharField(
         max_length=50, verbose_name="telegram chat-id", **NULLABLE

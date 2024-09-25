@@ -73,3 +73,8 @@ This project provides several API endpoints for interacting with the application
 - `DELETE /habits/<int:pk>/`: This operation deletes a particular Habit.
 
 
+## Docker-compose
+
+1. Install Docker if you don't already have it. You can download it [here](https://docs.docker.com/).
+2. Type the command in the terminal: docker-compose up -d --build
+
