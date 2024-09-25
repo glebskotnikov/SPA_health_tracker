@@ -38,15 +38,11 @@ class Migration(migrations.Migration):
                 ("is_pleasant", models.BooleanField(verbose_name="pleasant")),
                 (
                     "periodicity",
-                    models.PositiveIntegerField(
-                        default=1, verbose_name="periodicity"
-                    ),
+                    models.PositiveIntegerField(default=1, verbose_name="periodicity"),
                 ),
                 (
                     "reward",
-                    models.CharField(
-                        blank=True, max_length=100, verbose_name="reward"
-                    ),
+                    models.CharField(blank=True, max_length=100, verbose_name="reward"),
                 ),
                 (
                     "duration",
